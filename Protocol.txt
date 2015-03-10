@@ -1,0 +1,38 @@
+dla przejrzystoœci zapisu, tablice data przedstawiamy jako wektor
+np
+data = [2 0 18 31 4 4]
+zgodnie z jezykiem C
+data[0] == 2
+data[2] == 18
+
+/* Na start serwer wysy³a dwie wiadomoœci (mtype = 5) z ró¿nymi
+* wartoœciami w polu data[X * * * * *] (X = 1,2)
+* Ka¿dy z klientów odbiera jedn¹ z wy¿ej opisanych wiadomoœci,
+* która przypisuje mu jego ID. Nastêpnie ka¿dy z klientów
+* wys³a komunikaty o mtype=ID (gracz pierszy mtype = 1, gracz drugi mtype = 2),
+* natomiast serwer wysy³a wiadomoœci do ró¿nych klientów
+* o mtype=ID+2 (do gracza pierwszego mtype=3, dla gracza drugiego mtype=4).
+*
+* Przyk³adowa wiadomoœæ gracza:
+* mtype = 1; (mtype = 1,2)
+* data = {2 0 X X X X}; (gra jest kontynuowana (2 na miejscu 0),
+* a X oznaczaj¹ iloœæ jednostek do wyprodukowania)
+*
+* Przyk³adowa wiadomoœæ z serwera:
+* mtype = 3; (mtype = 3,4)
+* data = {2 2344 4 5 6 7 } (2 na pierwszym miejscu oznacza, ¿e w grze dalej jest 2 graczy,
+* nastepne wartosci opisuja ilosc surowców i jednostek)
+*
+* Nietypowe wiadomoœci od gracza:
+* pierwsza wiadomoœæ [0 0 0 0 0 0]
+* rezygnacja [-1 0 0 0 0 0] (ju¿ w czasie gry)
+* walka [3 0 0 0 0 0]
+*
+* Nietypowe wiadomoœci z serwera:
+* wiadomoœci startowe
+* przerwanie gry [-1 0 0 0 0 0]
+* wygrales walke [3 X X X X X]
+* przegrales walke [4 X X X X X]
+* wygrales [5 X X X X X]
+* przegrales [6 X X X X X]
+*/
